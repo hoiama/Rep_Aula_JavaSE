@@ -1,0 +1,10 @@
+br/com/hoiama/curriculos/model/entity/Formacao.class
+br/com/hoiama/curriculos/model/repository/CursoRepository.class
+br/com/hoiama/curriculos/model/entity/Curriculo.class
+br/com/hoiama/curriculos/model/entity/Curso.class
+br/com/hoiama/curriculos/testes/TesteCurriculo.class
+br/com/hoiama/curriculos/model/entity/Resumo.class
+br/com/hoiama/curriculos/main/StartSpring.class
+br/com/hoiama/curriculos/controller/ControllerDashboard.class
+br/com/hoiama/curriculos/regras/RegraNegocio.class
+br/com/hoiama/curriculos/model/entity/Experiencia.class

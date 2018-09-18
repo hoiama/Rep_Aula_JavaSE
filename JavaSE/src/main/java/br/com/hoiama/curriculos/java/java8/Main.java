@@ -5,7 +5,11 @@ public class Main {
 	public static void main(String[] args) {
 
 		Java8 java = new Java8();
-		java.getListaOrdenada();
+		java.ordenaPorCollectionSort();
+		java.ordenarPorTamanhoComparatorExterno();
+		java.ordenarPorTamanhoComparatorExternoCollections();
+		java.streamFilter();
+		java.DatasAPI();
 	}
 
 }

@@ -1,7 +1,13 @@
 package br.com.hoiama.curriculos.java.java8;
 
+import sun.util.resources.LocaleData;
+
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Java8 {
@@ -201,6 +207,7 @@ public class Java8 {
 			.mapToInt(TamanhoCurso -> TamanhoCurso.length())
 			.forEach(curso  -> System.out.println("Strean:filter:mapToInt : " + curso));
 
+
 		/**
 		 * Exemplo de função específica com "mapToInt".
 		 */
@@ -212,6 +219,9 @@ public class Java8 {
 		System.out.println("somaListaLengh " + somaListaLengh);
 
 
+		/**
+		 * Encontra valor qualquer(findAny), executa função se presente (ifPresent)
+		 */
 		Optional<Integer> optionalInteger =
 				lista
 					.stream()
@@ -219,9 +229,54 @@ public class Java8 {
 					.map(curso -> curso.length())
 					.findAny();
 		System.out.println("optional: " + optionalInteger);
+		optionalInteger.orElse(null); //ou devolve o "optionalInteger" ou Null
+		optionalInteger.ifPresent(curso -> System.out.println("ifPresent : " + curso));
 
-		 optionalInteger.orElse(null); //ou devolve o "optionalInteger" ou Null
-		 optionalInteger.ifPresent(curso -> System.out.println("ifPresent : " + curso));
+		/**
+		 * Coleta valor em um Collector"
+		 */
+		List<Integer> optionalColetado =
+				lista
+					.stream()
+					.filter(curso -> curso.length()>5)
+					.map(curso -> curso.length())
+					.collect(Collectors.toList());
+		System.out.println("optionalColetado: " + optionalColetado);
+
+		optionalColetado
+				.stream()
+				.findAny()
+				.ifPresent(curso -> System.out.println("ifPresent : " + curso));
+
+
+
+		/**
+		 * Coleta valor em um Collector" e guarda em um map.
+		 */
+		lista
+			.stream()
+			.collect(Collectors.toMap(curso -> curso.toString(), cursoLength -> cursoLength.length()))
+			.forEach((curso, cursoLenth) -> System.out.println(curso + " tem " + cursoLenth + " Caracteres "));
+
+	}
+
+
+	public void DatasAPI(){
+		LocalDate hoje = LocalDate.now();
+		System.out.println("Hoje" + hoje);
+
+		System.out.println("Ano" + hoje.getYear());
+		System.out.println("mes " + hoje.getMonth());
+		System.out.println("dia do mes " + hoje.getDayOfMonth());
+
+		LocalDate olimpiadas = LocalDate.of(2016, Month.APRIL, 5);
+		System.out.println("olinpiedas " + olimpiadas);
+
+		Period periodo = Period.between(olimpiadas, hoje);
+		System.out.println(periodo.getDays() + " e " + periodo.getMonths() + " Meses ");
+
+
+
 
 	}
 

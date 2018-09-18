@@ -9,6 +9,7 @@ public class Main {
 		java.ordenarPorTamanhoComparatorExterno();
 		java.ordenarPorTamanhoComparatorExternoCollections();
 		java.streamFilter();
+		java.DatasAPI();
 	}
 
 }

@@ -8,6 +8,7 @@ public class Main {
 		java.ordenaPorCollectionSort();
 		java.ordenarPorTamanhoComparatorExterno();
 		java.ordenarPorTamanhoComparatorExternoCollections();
+		java.streamFilter();
 	}
 
 }

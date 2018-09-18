@@ -2,18 +2,21 @@ package br.com.hoiama.curriculos.java.java8;
 
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.stream.IntStream;
 
 public class Java8 {
 
-	List<String> lista = new ArrayList<>();
+	private List<String> lista = new ArrayList<>();
+
 
 	public Java8 (){
-		lista.add("bd");
-		lista.add("d");
-		lista.add("aaa");
-		lista.add("ccccc");
-		lista.add("ff");
-		lista.add("e");
+		lista.add("ccccc5");
+		lista.add("dd2");
+		lista.add("aaa3");
+		lista.add("55555");
+		lista.add("4444");
+		lista.add("333");
+		lista.add("88888888");
 	}
 
 
@@ -160,7 +163,6 @@ public class Java8 {
 //		//Usando 'method reerence' ao invés de lambda (omitindo 'Comparator')
 //		lista.sort(comparing(String::length));
 //		System.out.println("Usando 'method reerence' : " + lista);
-//		
 
 		//Substituiao 3: Lambda: Criando consumer usando lambda
 		Consumer<String> consumer3 = aluno1 -> System.out.println("consumer com lambda: " + aluno1);
@@ -168,6 +170,60 @@ public class Java8 {
 
 	}
 
+
+	public void streamFilter(){
+
+		/**
+		 * ".filter" filtra elementos ormando uma nova lista baseada em uma condição.
+		 */
+		lista
+			.stream()
+			.filter(curso -> curso.length()>4)
+			.forEach(curso -> System.out.println("Strean : " + curso));
+
+
+		/**
+		 * ".map" simboliza os elementos da lista na forma do retorno da função definida.
+		 */
+		lista
+			.stream()
+			.filter(cursoFiltrado -> cursoFiltrado.length()>4)
+			.map(TamanhoCurso -> TamanhoCurso.length())
+			.forEach(curso -> System.out.println("Strean:filter:map : " + curso));
+
+
+		/**
+		 * ".map" simboliza os elementos da lista na forma de Integer, permitindo encadear outras funções específicas.
+		 */
+		lista
+			.stream()
+			.filter(cursoFiltrado -> cursoFiltrado.length() > 4)
+			.mapToInt(TamanhoCurso -> TamanhoCurso.length())
+			.forEach(curso  -> System.out.println("Strean:filter:mapToInt : " + curso));
+
+		/**
+		 * Exemplo de função específica com "mapToInt".
+		 */
+		int somaListaLengh =
+			lista
+				.stream()
+				.mapToInt(curso -> curso.length())
+				.sum();
+		System.out.println("somaListaLengh " + somaListaLengh);
+
+
+		Optional<Integer> optionalInteger =
+				lista
+					.stream()
+					.filter(curso -> curso.length()>5)
+					.map(curso -> curso.length())
+					.findAny();
+		System.out.println("optional: " + optionalInteger);
+
+		 optionalInteger.orElse(null); //ou devolve o "optionalInteger" ou Null
+		 optionalInteger.ifPresent(curso -> System.out.println("ifPresent : " + curso));
+
+	}
 
 
 }

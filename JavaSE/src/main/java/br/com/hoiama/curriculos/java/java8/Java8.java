@@ -1,6 +1,7 @@
 package br.com.hoiama.curriculos.java.java8;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.Period;
 import java.util.*;
 import java.util.function.Consumer;
@@ -8,8 +9,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Java8 {
-
-
 
 	private List<String> lista = new ArrayList<>();
 
@@ -57,18 +56,19 @@ public class Java8 {
 	 * Cria 'comparator' anonimo localmente para o ArrayList "lista"
 	 * Chamando "sort" no ArrayList "lista".
 	 */
-	public void ordenarPorTamanhoComparatorSimples(){
-		lista.sort(new Comparator<String>() {
-			@Override
-			public int compare(String s1, String s2) {
-				if (s1.length() < s2.length())
-					return -1;
-				if (s1.length() > s2.length())
-					return 1;
-				return 0;
-			}
-		});
-		System.out.println("Comparador local anonimo: " + lista);
+	public void ordenarPorTamanhoComparatorSimples() {
+        lista.sort(new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                if (s1.length() < s2.length())
+                    return -1;
+                if (s1.length() > s2.length())
+                    return 1;
+                return 0;
+            }
+        });
+        System.out.println("Comparador local anonimo: " + lista);
+    }
 
 
 	/**
@@ -167,7 +167,7 @@ public class Java8 {
         Consumer<String> consumer3 = aluno1 -> System.out.println("consumer com lambda: " + aluno1);
         lista.forEach(consumer3); // usando consumer local com lambda
 
-        }
+	}
 
 
 	//////////////////////////// USO DE FOREACH COM CONSUMER ////////////////////////////
@@ -201,9 +201,6 @@ public class Java8 {
 		//Substituiçao 3: Lambda: Criando consumer usando lambda
 		System.out.println("Usando 'method reerence' : " + lista);
 
-//		//Usando 'method reerence' ao invés de lambda (omitindo 'Comparator')
-//		lista.sort(comparing(String::length));
-//		System.out.println("Usando 'method reerence' : " + lista);
 
 		//Substituiao 3: Lambda: Criando consumer usando lambda
 		Consumer<String> consumer3 = aluno1 -> System.out.println("consumer com lambda: " + aluno1);
@@ -310,10 +307,6 @@ public class Java8 {
 		Period periodo = Period.between(olimpiadas, hoje);
 		System.out.println(periodo.getDays() + " e " + periodo.getMonths() + " Meses ");
 
-
-
-
 	}
-
 
 }
